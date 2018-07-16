@@ -7,6 +7,14 @@
 \addtolength{\topmargin}{-0.75in}
 \addtolength{\textheight}{1.50in}
 
+% language
+\newcommand{\foreign}[1]{\textsl{#1}}
+\newcommand{\etc}{\foreign{etc}}
+
+% math
+\newcommand{\inv}{^{-1}}
+\newcommand{\T}{^{\mathsf{T}}}
+
 \begin{document}
 
 \paragraph{abstract:}
@@ -42,17 +50,71 @@ What are the theoretical ideas about super-horizon gradients in physical laws?
 \section{Methods}
 
 Recall:
-\begin{eqnarray}
-\xi_k &=& \frac{DD_k - 2\,DR_k + RR_k}{RR_k}
+\begin{eqnarray}\displaystyle
+\xi_k &\leftarrow& \frac{DD_k - 2\,DR_k + RR_k}{RR_k}
 \\
-DD_k &\equiv& \sum_{n n'} i(a_k < |x_n - x_{n'}| < b_k)
+DD_k &\equiv& \sum_{n n'} i(g_k < |x_n - x_{n'}| < h_k)
 \\
-DR_k &\equiv& \sum_{n m} i(a_k < |x_n - x_m| < b_k)
+DR_k &\equiv& \sum_{n m} i(g_k < |x_n - x_m| < h_k)
 \\
-RR_k &\equiv& \sum_{m m'} i(a_k < |x_m - x_{m'}| < b_k)
+RR_k &\equiv& \sum_{m m'} i(g_k < |x_m - x_{m'}| < h_k)
 \quad ,
 \end{eqnarray}
-where...
+where
+$\xi_k$ is the value of the correlation function estimate in radius bin $k$,
+$DD_k$ is the count of data--data pairs in bin $k$
+(which has bin edges $g_k$ and $h_k$),
+$i()$ is an indicator function,
+$x_n$, $x_n'$, \etc, are three-d positions (or two-d projected, depending),
+$DR_k$ is the count of data--random pairs,
+and
+$RR_k$ is the count of random--random pairs.
+
+Now we are going to estimate a vector of quantities.
+Our model is that the correlation function has a linear gradient in it, or
+\begin{eqnarray}\displaystyle
+\xi_k(s) &=& a_k\T\cdot u
+\\
+u &\equiv& \left[\begin{array}{c}1 \\ (s - s_0)\end{array}\right]
+\end{eqnarray}
+where
+again $\xi_k(s)$ is the correlation function in radius bin $k$,
+but now it depends on redshift-space three-vector position $s$,
+$a_k$ is a four-vector of amplitudes relevant to bin $k$,
+$u$ is a four-vector ``design matrix'',
+$s$ is the three-vector redshift-space three-vector position
+at which the correlation function is being evaluated,
+and
+$s_0$ is a fiducial redshift-space three-vector position (the ``pivot'', perhaps).
+(Implicitly all vectors are column vectors in my world.)
+To be clear, the first element of $a_k$ is the fiducial value of the correlation
+function---the value the function has at fiducial position $s_0$---and the
+following three elements of $a_k$ are the gradient of $\xi_k$ with respect to
+redshift-space three-vector position $s$.
+
+The estimator for the four-vector $a_k$ becomes
+\begin{eqnarray}\displaystyle
+a_k &\leftarrow& Q_k\inv\cdot [DD_k - 2\,DR_k + RR_k]
+\\
+DD_k &\equiv& \sum_{n n'} i(g_k < |x_n - x_{n'}| < h_k)\,u_{n n'}
+\\
+DR_k &\equiv& \sum_{n m} i(g_k < |x_n - x_m| < h_k)\,u_{n m}
+\\
+RR_k &\equiv& \sum_{m m'} i(g_k < |x_m - x_{m'}| < h_k)\,u_{m m'}
+\\
+Q_k &\equiv& \sum_{m m'} i(g_k < |x_m - x_{m'}| < h_k)\,u_{m m'} \cdot u_{m m'}\T
+\quad ,
+\end{eqnarray}
+where
+everything is the same, except:
+Now the indicator functions are multiplied by four-vectors $u_{n n'}$ which are
+four-vector design vectors appropriate for each pair (constructed at the center-point
+of each pair, say),
+and
+instead of dividing by $RR_k$ we left-multiply by an inverse $4\times 4$ matrix
+constructed by outer products of $u_{m m'}$ four-vectors.
+(Because vectors are column vectors for me, $u\cdot u\T$ is an outer product;
+$u\T\cdot u$ would be an inner product.)
 
 \section{Data and results}
 

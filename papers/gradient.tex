@@ -72,6 +72,10 @@ $DR_k$ is the count of data--random pairs,
 and
 $RR_k$ is the count of random--random pairs.
 
+As I have written this, it is an estimator for $\xi(x)$ but it could also
+be an estimate for the projected function $w_p(r_p)$. HOGG: We should write
+that down explicitly.
+
 Now we are going to estimate a vector of quantities.
 Our model is that the correlation function has a linear gradient in it, or
 \begin{eqnarray}\displaystyle
@@ -118,7 +122,25 @@ constructed by outer products of $u_{m m'}$ four-vectors.
 (Because vectors are column vectors for me, $u\cdot u\T$ is an outer product;
 $u\T\cdot u$ would be an inner product.)
 
+HOGG: QUESTIONS:
+\begin{itemize}
+\item There will (in general) be gradients in the redshift-direction, that are
+not purely spatial gradients. Since we aren't interested in these, we should
+probably fit them out (or work in a narrow redshift shell). This all requires
+thought and attention. One option would be to add terms into the model for $\xi$,
+so there is a redshift term and a redshift-squared term and so on. Another would
+be to remove the theoretical dependence on $z$ explicitly. Both have advantages
+and disadvantages.
+\end{itemize}
+
 \section{Data and results}
+
+HOGG: Questions for our actual implementation:
+\begin{itemize}
+\item Do we do $w_p(r_p)$ or do we do $\xi(s)$ on large scales? I think probably
+the latter because there are fewer issues, and it can be easily interpreted in terms
+of standard cosmological parameter combinations.
+\end{itemize}
 
 \section{Discussion}
 

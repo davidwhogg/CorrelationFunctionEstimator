@@ -1,7 +1,6 @@
-# CosmologicalGradient
+# CorrelationFunctionEstimator
 
-Determine the gradient in the correlation function (and cosmological parameters)
-by building sensible generalized correlation-function estimators.
+Generalized the standard correlation-function estimator to estimate the parameters of more complex functional forms for the correlation function.
 
 ## Authors:
 - **David W. Hogg** *(NYU) (MPIA) (Flatiron)*
@@ -11,5 +10,7 @@ by building sensible generalized correlation-function estimators.
 Copyright 2018 the authors. All rights reserved (for now).
 
 ## Comments
-- Thinking about the relationship between correlation-function estimation and
-linear fitting.
+- Estimator generalized by thinking about the relationship between correlation-function estimation and linear fitting.
+- New estimator can be used to simultaneously estimate power spectrum and correlation function in one shot.
+- Also can be used to extract Fisher-information-saturating sufficient statistics for cosmological-parameter estimates.
+- Originally designed to look for gradients in cosmological power with respect to position, density, or other model-breaking anomalies.

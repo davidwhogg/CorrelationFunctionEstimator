@@ -1,6 +1,6 @@
 # CorrelationFunctionEstimator
 
-Generalized the standard correlation-function estimator to estimate the parameters of more complex functional forms for the correlation function.
+Generalizing the standard (DD-2DR+RR)/RR correlation-function estimator to estimate the parameters of more complex functional forms for the correlation function.
 
 ## Authors:
 - **David W. Hogg** *(NYU) (MPIA) (Flatiron)*

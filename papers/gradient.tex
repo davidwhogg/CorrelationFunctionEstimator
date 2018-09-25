@@ -146,4 +146,45 @@ of standard cosmological parameter combinations.
 
 \section{Discussion}
 
+\appendix
+\section{Affine Invariance}
+
+The estimator is invariant under an affine transformation. We represent this by a matrix M, such that 
+\begin{equation}
+u' \leftarrow Mu
+\end{equation}
+Then in the primed basis, the pair counts become
+\begin{eqnarray}\displaystyle
+DD'_k &=& M\sum_{n n'} i(g_k < |x_n - x_{n'}| < h_k)\,u_{n n'}
+\\
+DR'_k &=& M\sum_{n m} i(g_k < |x_n - x_m| < h_k)\,u_{n m}
+\\
+RR'_k &=& M\sum_{m m'} i(g_k < |x_m - x_{m'}| < h_k)\,u_{m m'}
+\end{eqnarray}
+where we have factored $M$ out of the summation. For the Q matrix we have
+\begin{eqnarray}\displaystyle
+Q'_k &=& \sum_{m m'} i(g_k < |x_m - x_{m'}| < h_k)\,(Mu_{m m'}) \cdot (Mu_{m m'})\T \\
+&=& M\Bigg[ \sum_{m m'} i(g_k < |x_m - x_{m'}| < h_k)\,u_{m m'} \cdot u_{m m'}\T \Bigg]M\T
+\end{eqnarray}
+Relating these back to the unprimed basis, we see that the amplitudes become
+\begin{eqnarray}\displaystyle
+a'_k &=& [M Q_k M\T]\inv \cdot [MDD_k - 2\,MDR_k + MRR_k] \\
+&=& (M\T)\inv Q_k\inv \cdot [DD_k - 2\,DR_k + RR_k] \\
+&=& (M\T)\inv a_k
+\end{eqnarray}
+Then the estimator in the primed basis is 
+\begin{eqnarray}\displaystyle
+\xi'_k(s) &=& [(M\T)\inv a_k]\T \cdot (Mu) \\
+&=& a_k\T \cdot u
+\end{eqnarray}
+which is equivalent to the estimator in the original basis.
+
+This requires that $M$ be invertible, but any two equivalent bases must be related by the inverse of a transformation matrix, so this requirement is already satisfied.
+
 \end{document}
+
+
+
+
+
+
